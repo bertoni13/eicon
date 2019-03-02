@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="col-12">
+    <input class="form-control mr-sm-2" type="search"
+      placeholder="Procure o Filme"
+      [(ngModel)]="query" (ngModelChange)="search($event)" />
+  </div>
+  <div class="col-12" *ngIf='list_movie.results?.length === 0'>
+    <div class="alert alert-info" role="alert">Filme não encontrado!</div>
+  </div>
+</div>
+<table *ngIf="list_movie" class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nome do filme</th>
+      <th scope="col">Data de lançamento</th>
+      <th scope="col">Média de votos</th>
+      <th scope="col"><!----></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let movie of list_movie.results | paginate: { itemsPerPage: 5, currentPage: page }; let i = index">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>
+        <img src="https://image.tmdb.org/t/p/w300/{{movie.backdrop_path}}" class="mr-2" style="width: 50px">
+        {{ movie.title }}
+      </td>
+      <td>{{ movie.release_date | date: 'dd/MM/yyyy' }}</td>
+      <td>{{ movie.vote_average }}</td>
+      <td><button type="button" class="btn btn-info" (click)="movieDetails(movie)">Ver detalhes</button></td>
+    </tr>
+  </tbody>
+  <tr>
+    <td colspan="5">
+      <nav class="page" aria-label="paginacao">
+        <pagination-controls previousLabel="Anterior" nextLabel="Seguinte" (pageChange)="page = $event"></pagination-controls>
+      </nav>
+    </td>
+  </tr>
+</table>

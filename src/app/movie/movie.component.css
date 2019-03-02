@@ -1,0 +1,15 @@
+.col {
+  flex-grow: 0;
+}
+table thead th span {
+  font-weight: normal;
+}
+.type {
+  float: left;
+  margin-right: 5px;
+}
+.genres {
+  display: table;
+  float: left;
+  margin-right: 10px;
+}

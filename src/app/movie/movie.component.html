@@ -1,0 +1,56 @@
+<div *ngIf="movieDetails" class="container">
+	<div class="row">
+    <div class="col">
+      <p>
+				<img src="https://image.tmdb.org/t/p/w300/{{movieDetails.poster_path}}" class="mr-2">
+			</p>
+    </div>
+		<div class="col-md">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col">Nome:
+            <span>{{ movieDetails.title }}</span>
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>
+            <div class="container">
+              <div class="row">
+                <div class="col-4">
+                  <strong class="type">Tipo:</strong>
+                  <div class="genres" *ngFor="let g of movieDetails?.genres">
+                  	{{ g.name }}
+                  </div>
+                </div>
+                <div class="col-2">
+                  <strong class="type">Ano:</strong>
+                  {{ movieDetails.release_date | date: 'dd/MM/yyyy' }}
+                </div>
+                <div class="col-sm">
+                  <strong class="type">Produtora:</strong>
+                  <div class="genres" *ngFor="let p of movieDetails?.production_companies">
+                    <img src="https://image.tmdb.org/t/p/w300/{{p.logo_path}}" width="20">
+                    {{ p.name }}
+                  </div>
+									<div class="genres" *ngIf="movieDetails?.production_companies.length === 0">
+										Não especificado
+									</div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            {{ movieDetails.overview }}
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <button type="button" class="btn btn-info" routerLink="/">Voltar</button>
+		</div>
+	</div>
+</div><!-- /container -->
