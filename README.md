@@ -11,3 +11,4 @@
 2 - Abrir o console e ir na pasta do projeto e instalar o angular cli global "npm install -g @angular/cli"<br/>
 3 - Na pasta do projeto, no console, instalar os package necessarios  "npm i"<br/>
 4 - Na pasta do projeto no console, digitar "ng serve"
+5 - Após compilar, acessar a url: http://localhost:4200/ 
